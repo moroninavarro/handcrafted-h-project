@@ -1,4 +1,4 @@
-import SellerCard from '@/components/sellers/sellerCard';
+import SellerCard from './sellerCard';
 import { sellers } from '@/data/sellers';
 
 export default function SellerGrid() {
