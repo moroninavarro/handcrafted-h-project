@@ -45,7 +45,7 @@ export default function Navbar() {
 
     return (
 
-    <aside className="fixed top-0 left-0 z-50 w-full h-16 bg-white border-b shadow-lg md:h-screen md:w-64 md:border-r md:border-b-0">
+    <aside className="fixed top-0 left-0 z-50 w-full h-36 bg-white border-b shadow-lg md:h-screen md:w-64 md:border-r md:border-b-0">
        
         
          <div className="flex items-center justify-center h-20 border-b">
