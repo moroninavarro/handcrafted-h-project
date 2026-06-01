@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -31,14 +32,14 @@ export default function LoginForm() {
         </div>
 
         <button className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition">
-          Login
+          <Link href="/">Login</Link>
         </button>
 
         <p className="mt-4 text-center text-gray-600">
           You do not have an account?{" "}
-          <a href="/register" className="text-blue-500 hover:underline">
+          <Link href="/register" className="text-blue-500 hover:underline">
             Register
-          </a>
+          </Link>
         </p>
       </div>
     </div>
