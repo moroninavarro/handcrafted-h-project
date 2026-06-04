@@ -36,10 +36,10 @@ export default function SellerCard({ seller }: SellerCardProps) {
         </div>
 
         <Link
-          href={`/sellers/${seller.id}`}
+          href={`/sellers/${seller.id}/products`}
           className="inline-block mt-5 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600"
         >
-          View Profile
+          View Products
         </Link>
       </div>
     </div>

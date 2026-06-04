@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { sellers } from '@/data/sellers';
-import SellerProfile from '@/components/sellers/SellerProfile';
+import SellerProducts from '@/components/sellers/SellerProducts';
 
 interface SellerPageProps {
   params: {
@@ -17,5 +17,5 @@ export default function SellerPage({ params }: SellerPageProps) {
     return notFound();
   }
 
-  return <SellerProfile seller={seller} />;
+  return <SellerProducts seller={seller} />;
 }
