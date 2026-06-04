@@ -1,8 +1,14 @@
-import { Metadata } from 'next';
+"use client";
+
+import { useState } from "react";
 import { products } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import ProductModal from "@/components/ProductModal";
 
 export default function Page() {
+
+    const [selectedProduct, setSelectedProduct] = useState<any>(null);
+
     return (
         <main className="min-h-screen bg-gray-50">
 
@@ -14,14 +20,21 @@ export default function Page() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {products.map((p) => (
-                        <ProductCard key={p.id} {...p} />
+                        <ProductCard
+                            key={p.id}
+                            {...p}
+                            onClick={() => setSelectedProduct(p)}
+                        />
                     ))}
+
+                    {selectedProduct && (
+                        <ProductModal
+                            product={selectedProduct}
+                            onClose={() => setSelectedProduct(null)}
+                        />
+                    )}
                 </div>
             </div>
         </main>
     );
 }
-
-export const metadata: Metadata = {
-    title: 'Products',
-};

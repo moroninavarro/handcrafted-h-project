@@ -26,7 +26,7 @@ export const products: Product[] = [
         sellerId: "1",
         category: "Jewelry",
         price: 35,
-        image: "/images/maasai-necklace.jpg",
+        image: "/images/necklace1.png",
         reviews: [
             { id: "r1", user: "Alice", rating: 5, comment: "Beautiful craftsmanship." },
             { id: "r2", user: "Sam", rating: 4, comment: "Looks amazing." }
@@ -39,7 +39,7 @@ export const products: Product[] = [
         sellerId: "1",
         category: "Jewelry",
         price: 22,
-        image: "/images/brass-earrings.jpg",
+        image: "/images/earrings1.png",
         reviews: [
             { id: "r3", user: "Chloe", rating: 5, comment: "Love these earrings." },
             { id: "r4", user: "Sophia", rating: 5, comment: "Very stylish." }
@@ -52,7 +52,7 @@ export const products: Product[] = [
         sellerId: "1",
         category: "Jewelry",
         price: 18,
-        image: "/images/beaded-bracelet.jpg",
+        image: "/images/bracelet1.png",
         reviews: [
             { id: "r5", user: "Marcus", rating: 4, comment: "Nice quality." },
             { id: "r6", user: "Olivia", rating: 3, comment: "Good for the price." }
@@ -67,7 +67,7 @@ export const products: Product[] = [
         sellerId: "1",
         category: "Candles",
         price: 15,
-        image: "/images/vanilla-candle.jpg",
+        image: "/images/candle1.png",
         reviews: [
             { id: "r7", user: "John", rating: 5, comment: "Smells wonderful." },
             { id: "r8", user: "Sarah", rating: 4, comment: "Long lasting scent." }
@@ -80,7 +80,7 @@ export const products: Product[] = [
         sellerId: "1",
         category: "Candles",
         price: 17,
-        image: "/images/lavender-candle.jpg",
+        image: "/images/candle2.png",
         reviews: [
             { id: "r9", user: "Chloe", rating: 5, comment: "Very calming." },
             { id: "r10", user: "Daniel", rating: 5, comment: "My favorite candle." }
@@ -93,7 +93,7 @@ export const products: Product[] = [
         sellerId: "1",
         category: "Candles",
         price: 20,
-        image: "/images/beeswax-candle.jpg",
+        image: "/images/candle3.png",
         reviews: [
             { id: "r11", user: "Grace", rating: 4, comment: "Burns evenly." },
             { id: "r12", user: "Lucas", rating: 3, comment: "Nice but small." }
@@ -108,7 +108,7 @@ export const products: Product[] = [
         sellerId: "2",
         category: "Woodworking",
         price: 42,
-        image: "/images/wooden-bowl.jpg",
+        image: "/images/bowl1.png",
         reviews: [
             { id: "r13", user: "Alice", rating: 5, comment: "Excellent quality." },
             { id: "r14", user: "Sam", rating: 4, comment: "Beautiful finish." }
@@ -121,7 +121,7 @@ export const products: Product[] = [
         sellerId: "2",
         category: "Woodworking",
         price: 38,
-        image: "/images/serving-tray.jpg",
+        image: "/images/tray1.png",
         reviews: [
             { id: "r15", user: "Sophia", rating: 4, comment: "Very practical." },
             { id: "r16", user: "Marcus", rating: 4, comment: "Looks great." }
@@ -134,7 +134,7 @@ export const products: Product[] = [
         sellerId: "2",
         category: "Woodworking",
         price: 50,
-        image: "/images/jewelry-box.jpg",
+        image: "/images/box1.png",
         reviews: [
             { id: "r17", user: "Chloe", rating: 5, comment: "Perfect gift." },
             { id: "r18", user: "Olivia", rating: 5, comment: "Highly recommend." }
@@ -149,7 +149,7 @@ export const products: Product[] = [
         sellerId: "2",
         category: "Paintings",
         price: 75,
-        image: "/images/savannah-sunset.jpg",
+        image: "/images/sunset1.png",
         reviews: [
             { id: "r19", user: "John", rating: 5, comment: "Stunning artwork." },
             { id: "r20", user: "Sarah", rating: 4, comment: "Looks great on my wall." }
@@ -162,7 +162,7 @@ export const products: Product[] = [
         sellerId: "2",
         category: "Paintings",
         price: 65,
-        image: "/images/wildlife-watercolor.jpg",
+        image: "/images/watercolor1.png",
         reviews: [
             { id: "r21", user: "Lucas", rating: 4, comment: "Lovely colors." },
             { id: "r22", user: "Grace", rating: 3, comment: "Smaller than expected." }
@@ -175,7 +175,7 @@ export const products: Product[] = [
         sellerId: "2",
         category: "Paintings",
         price: 85,
-        image: "/images/tribal-painting.jpg",
+        image: "/images/tribal1.png",
         reviews: [
             { id: "r23", user: "Daniel", rating: 5, comment: "Amazing details." },
             { id: "r24", user: "Alice", rating: 5, comment: "Beautiful piece." }
@@ -190,7 +190,7 @@ export const products: Product[] = [
         sellerId: "3",
         category: "Textiles",
         price: 60,
-        image: "/images/african-dress.jpg",
+        image: "/images/dress1.png",
         reviews: [
             { id: "r25", user: "Sophia", rating: 5, comment: "Fits perfectly." },
             { id: "r26", user: "Chloe", rating: 4, comment: "Great fabric." }
@@ -203,7 +203,7 @@ export const products: Product[] = [
         sellerId: "3",
         category: "Textiles",
         price: 28,
-        image: "/images/scarf.jpg",
+        image: "/images/scarf1.png",
         reviews: [
             { id: "r27", user: "Olivia", rating: 4, comment: "Very comfortable." },
             { id: "r28", user: "Marcus", rating: 4, comment: "Good quality." }
@@ -216,7 +216,7 @@ export const products: Product[] = [
         sellerId: "3",
         category: "Textiles",
         price: 45,
-        image: "/images/throw-blanket.jpg",
+        image: "/images/blanket1.png",
         reviews: [
             { id: "r29", user: "John", rating: 5, comment: "Beautiful design." },
             { id: "r30", user: "Lucas", rating: 4, comment: "Very cozy." }
@@ -231,7 +231,7 @@ export const products: Product[] = [
         sellerId: "3",
         category: "Pottery",
         price: 48,
-        image: "/images/clay-vase.jpg",
+        image: "/images/vase1.png",
         reviews: [
             { id: "r31", user: "Grace", rating: 5, comment: "Beautiful centerpiece." },
             { id: "r32", user: "Sam", rating: 4, comment: "Very authentic." }
@@ -244,7 +244,7 @@ export const products: Product[] = [
         sellerId: "3",
         category: "Pottery",
         price: 14,
-        image: "/images/tea-cup.jpg",
+        image: "/images/cup1.png",
         reviews: [
             { id: "r33", user: "Chloe", rating: 4, comment: "Nice craftsmanship." },
             { id: "r34", user: "Daniel", rating: 3, comment: "A bit small." }
@@ -257,7 +257,7 @@ export const products: Product[] = [
         sellerId: "3",
         category: "Pottery",
         price: 32,
-        image: "/images/pottery-bowl.jpg",
+        image: "/images/bowl2.png",
         reviews: [
             { id: "r35", user: "Sarah", rating: 5, comment: "Absolutely beautiful." },
             { id: "r36", user: "Sophia", rating: 5, comment: "Excellent quality." }
