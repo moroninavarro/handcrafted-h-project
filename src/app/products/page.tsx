@@ -25,3 +25,10 @@ export default function Page() {
 export const metadata: Metadata = {
     title: 'Products',
 };
+
+
+//     {
+//         name: "Categories",
+//         href: "/categories",
+//         icon: Squares2X2Icon,
+//     }
