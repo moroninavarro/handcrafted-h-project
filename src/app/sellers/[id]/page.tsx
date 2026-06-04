@@ -24,6 +24,7 @@ export default function SellerPage({ params }: SellerPageProps) {
             src={seller.image}
             alt={seller.name}
             fill
+            loading="eager"
             className="object-cover"
           />
         </div>

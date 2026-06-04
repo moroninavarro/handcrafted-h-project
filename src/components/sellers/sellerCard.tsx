@@ -14,6 +14,7 @@ export default function SellerCard({ seller }: SellerCardProps) {
         alt={seller.name}
         width={500}
         height={300}
+        loading="eager"
         className="w-full h-64 object-cover"
       />
 
