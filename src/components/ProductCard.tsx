@@ -10,10 +10,11 @@ type ProductCardProps = {
     reviews: {
         rating: number;
     }[];
+    onClick: () => void;
 };
 
 export default function ProductCard({
-    name, description, sellerId, price, image, reviews, }:
+    name, description, sellerId, price, image, reviews, onClick, }:
     ProductCardProps) {
 
     const sellerData = sellers.find(s => s.id === sellerId);
@@ -25,11 +26,12 @@ export default function ProductCard({
     const fullStars = Math.floor(rating);
 
     return (
-        <div className="border rounded-lg p-4 flex flex-col gap-3 bg-white">
+        <div onClick={onClick}
+            className="border rounded-lg p-4 flex flex-col gap-3 bg-white cursor-pointer hover:shadow-lg transition h-full">
 
             <img src={image} alt={name} className="w-full h-40 object-cover rounded-md" />
 
-            <div className="flex flex-col gap-1 text-left">
+            <div className="flex flex-col gap-1 text-left flex-grow">
                 <h3 className="font-semibold text-lg">{name}</h3>
                 <p className="text-sm text-gray-600">{description}</p>
                 <p className="text-xs text-gray-500">by {" "}
