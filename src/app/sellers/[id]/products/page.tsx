@@ -3,13 +3,14 @@ import { sellers } from '@/data/sellers';
 import SellerProducts from '@/components/sellers/SellerProducts';
 
 interface SellerProductsPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function SellerProductsPage({ params }: SellerProductsPageProps) {
-  const seller = sellers.find((item) => item.id === params.id);
+export default async function SellerProductsPage({ params }: SellerProductsPageProps) {
+  const { id } = await params;
+  const seller = sellers.find((item) => String(item.id) === String(id));
 
   if (!seller) {
     return notFound();

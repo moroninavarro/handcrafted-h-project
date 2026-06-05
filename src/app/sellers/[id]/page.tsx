@@ -4,13 +4,14 @@ import { notFound } from 'next/navigation';
 import { sellers } from '@/data/sellers';
 
 interface SellerPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function SellerPage({ params }: SellerPageProps) {
-  const seller = sellers.find((item) => item.id === params.id);
+export default async function SellerPage({ params }: SellerPageProps) {
+  const { id } = await params;
+  const seller = sellers.find((item) => String(item.id) === String(id));
 
   if (!seller) {
     return notFound();
@@ -30,7 +31,7 @@ export default function SellerPage({ params }: SellerPageProps) {
         </div>
 
         <div className="p-8 lg:p-12">
-          <p className="text-orange-500 font-semibold mb-3">{seller.specialty}</p>
+          <p className="text-amber-700 font-semibold mb-3">{seller.specialty}</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">{seller.name}</h1>
           <p className="text-gray-600 mb-6">{seller.bio}</p>
 
@@ -51,7 +52,7 @@ export default function SellerPage({ params }: SellerPageProps) {
 
           <Link
             href={`/sellers/${seller.id}/products`}
-            className="inline-flex items-center justify-center rounded-full bg-orange-500 px-8 py-3 text-white font-semibold hover:bg-orange-600 transition"
+            className="inline-flex items-center justify-center rounded-full bg-amber-800 px-8 py-3 text-white font-semibold hover:bg-amber-900 transition"
           >
             View Products
           </Link>

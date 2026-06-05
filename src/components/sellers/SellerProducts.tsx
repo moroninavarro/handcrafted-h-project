@@ -15,7 +15,7 @@ export default function SellerProducts({ seller }: SellerProductsProps) {
   return (
     <section className="w-full">
       {/* Seller Header */}
-      <div className="bg-gradient-to-r from-orange-400 to-orange-600 text-white py-12 px-6 mb-12 rounded-2xl">
+      <div className="bg-gradient-to-r from-amber-700 to-amber-900 text-white py-12 px-6 mb-12 rounded-2xl">
         <div className="max-w-5xl mx-auto flex gap-8 items-center">
           <Image
             src={seller.image}
