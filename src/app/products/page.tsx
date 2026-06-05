@@ -5,6 +5,7 @@ import { products } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import ProductModal from "@/components/ProductModal";
 
+
 export default function Page() {
 
     const [selectedProduct, setSelectedProduct] = useState<any>(null);
@@ -38,10 +39,6 @@ export default function Page() {
         </main>
     );
 }
-}
 
-export const metadata: Metadata = {
-    title: 'Products',
-};
 
 
