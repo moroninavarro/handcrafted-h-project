@@ -14,6 +14,7 @@ export default function SellerCard({ seller }: SellerCardProps) {
         alt={seller.name}
         width={500}
         height={300}
+        loading="eager"
         className="w-full h-64 object-cover"
       />
 
@@ -22,7 +23,7 @@ export default function SellerCard({ seller }: SellerCardProps) {
           {seller.name}
         </h2>
 
-        <p className="text-orange-500 font-medium">
+        <p className="text-amber-700 font-medium">
           {seller.specialty}
         </p>
 
@@ -36,10 +37,10 @@ export default function SellerCard({ seller }: SellerCardProps) {
         </div>
 
         <Link
-          href={`/sellers/${seller.id}`}
-          className="inline-block mt-5 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600"
+          href={`/sellers/${seller.id}/products`}
+          className="inline-block mt-5 bg-amber-800 text-white px-4 py-2 rounded-lg hover:bg-amber-900"
         >
-          View Profile
+          View Products
         </Link>
       </div>
     </div>
