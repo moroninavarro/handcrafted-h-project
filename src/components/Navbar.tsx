@@ -24,11 +24,6 @@ const links = [
         icon: ShoppingBagIcon,
     },
     {
-        name: "Categories",
-        href: "/categories",
-        icon: Squares2X2Icon,
-    },
-    {
         name: "Sellers",
         href: "/sellers",   
         icon: UserGroupIcon,
