@@ -27,8 +27,3 @@ export const metadata: Metadata = {
 };
 
 
-//     {
-//         name: "Categories",
-//         href: "/categories",
-//         icon: Squares2X2Icon,
-//     }
