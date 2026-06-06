@@ -1,10 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { sellers } from "@/data/sellers";
+
 
 type ProductModalProps = {
-    product: any;
+    product: {
+        id: string;
+        name: string;
+        description: string;
+        price: number;
+        image: string;
+        category: string;
+        seller: {
+            id: string;
+            name: string;
+        };
+        reviews: { rating: number; }[];
+    };
     onClose: () => void;
 };
 
@@ -14,7 +26,7 @@ export default function ProductModal({
 }: ProductModalProps) {
     const [userRating, setUserRating] = useState(0);
     const [reviewText, setReviewText] = useState("");
-    const seller = sellers.find((s) => s.id === product.sellerId);
+   
 
     const rating =
         product.reviews.length > 0
@@ -82,7 +94,7 @@ export default function ProductModal({
                         </p>
 
                         <p className="text-gray-600">
-                            Seller: {seller?.name}
+                            Seller: {product.seller.name}
                         </p>
 
                         <div className="flex items-center gap-2">

@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { sellers } from '@/data/sellers';
+import { getDb } from '@//lib/mongodb';
+import { ObjectId } from 'mongodb';
+
 
 interface SellerPageProps {
   params: Promise<{
@@ -11,7 +13,8 @@ interface SellerPageProps {
 
 export default async function SellerPage({ params }: SellerPageProps) {
   const { id } = await params;
-  const seller = sellers.find((item) => String(item.id) === String(id));
+  const db = await getDb();
+  const seller = await db.collection("sellers").findOne({ _id: new ObjectId(id) });
 
   if (!seller) {
     return notFound();
@@ -62,6 +65,12 @@ export default async function SellerPage({ params }: SellerPageProps) {
   );
 }
 
-export function generateStaticParams() {
-  return sellers.map((seller) => ({ id: seller.id }));
+export async function generateStaticParams() {
+  const db = await getDb();
+  const sellers = await db
+    .collection("sellers")
+    .find({}, { projection: { _id: 1 } })
+    .toArray();
+
+  return sellers.map((seller: any) => ({ id: seller._id.toString() }));
 }

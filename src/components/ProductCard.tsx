@@ -1,29 +1,29 @@
-import { sellers } from '@/data/sellers';
+
 import Link from "next/link";
 
 type ProductCardProps = {
+    id: string;
     name: string;
     description: string;
-    sellerId: string;
+    seller:{
+        id: string; 
+        name: string;
+    };
     price: number;
     image: string;
-    reviews: {
-        rating: number;
-    }[];
+    reviews: { rating: number;}[];
     onClick: () => void;
 };
 
 export default function ProductCard({
-    name, description, sellerId, price, image, reviews, onClick, }:
-    ProductCardProps) {
-
-    const sellerData = sellers.find(s => s.id === sellerId);
-
+    id, name, description, seller, price, image, reviews, onClick,
+ }: ProductCardProps) {
     const rating = reviews.length > 0
         ? reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length
         : 0;
 
     const fullStars = Math.floor(rating);
+    
 
     return (
         <div onClick={onClick}
@@ -39,7 +39,7 @@ export default function ProductCard({
                         href="/sellers"
                         className="hover:underline"
                     >
-                        {sellerData?.name}
+                        {seller.name}
                     </Link>
                 </p>
                 <div className="flex items-center gap-2">

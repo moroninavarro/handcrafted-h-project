@@ -1,6 +1,5 @@
-'use client';
 
-import { products } from '@/data/products';
+import { getDb } from '@/lib/mongodb';
 import { Seller } from '@/types/seller';
 import ProductCard from '@/components/ProductCard';
 import Image from 'next/image';
@@ -9,8 +8,34 @@ interface SellerProductsProps {
   seller: Seller;
 }
 
-export default function SellerProducts({ seller }: SellerProductsProps) {
-  const sellerProducts = products.filter(p => p.sellerId === seller.id);
+export default async function SellerProducts({ seller }: SellerProductsProps) {
+
+  const db = await getDb();
+  const products = await db.collection("products").find({}).toArray();
+  const reviews = await db.collection("reviews").find({}).toArray();
+
+  const sellerProducts = products
+  .filter((p: any) => p.sellerId === seller.id)
+  .map((p: any) => ({
+    id: p._id.toString(),
+    name: p.name,
+    description: p.description,
+    price: p.price,
+    image: p.image,
+    category: p.category,
+    reviews: reviews
+    .filter((r: any) => r.productId === p._id.toString())
+    .map((r: any) => ({
+      id: r._id.toString(),
+      userId: r.userId,
+      rating: r.rating,
+      comment: r.comment,
+    })),
+    seller: {
+      id: seller.id,
+      name: seller.name,
+    }
+  }));
 
   return (
     <section className="w-full">
@@ -40,13 +65,14 @@ export default function SellerProducts({ seller }: SellerProductsProps) {
       {/* Products Section */}
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold mb-8">
-          {sellerProducts.length} {sellerProducts.length === 1 ? 'Product' : 'Products'}
+          {sellerProducts.length} 
         </h2>
 
         {sellerProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sellerProducts.map(product => (
-              <ProductCard key={product.id} {...product} />
+            {sellerProducts.map((product: any) => (
+              <ProductCard key={product.id} {...product} 
+              />
             ))}
           </div>
         ) : (
