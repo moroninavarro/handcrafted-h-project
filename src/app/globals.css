@@ -28,8 +28,14 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-h1, h2 {
+h1,
+h2,
+h3 {
     font-family: var(--font-newsreader);
+}
+
+.description {
+    font-style: italic;
 }
 
 ::-webkit-scrollbar {

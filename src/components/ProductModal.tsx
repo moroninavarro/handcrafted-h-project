@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-
 type ProductModalProps = {
     product: {
         id: string;
@@ -26,7 +25,6 @@ export default function ProductModal({
 }: ProductModalProps) {
     const [userRating, setUserRating] = useState(0);
     const [reviewText, setReviewText] = useState("");
-   
 
     const rating =
         product.reviews.length > 0
@@ -39,37 +37,42 @@ export default function ProductModal({
     const fullStars = Math.floor(rating);
 
     useEffect(() => {
-        document.body.style.overflow = "hidden";
+    const scrollY = window.scrollY;
 
-        const handleEscape = (e: KeyboardEvent) => {
-            if (e.key === "Escape") {
-                onClose();
-            }
-        };
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
 
-        window.addEventListener("keydown", handleEscape);
+    const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+            onClose();
+        }
+    };
 
-        return () => {
-            document.body.style.overflow = "auto";
-            window.removeEventListener("keydown", handleEscape);
-        };
-    }, [onClose]);
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+
+        window.removeEventListener("keydown", handleEscape);
+        window.scrollTo(0, scrollY);
+    };
+}, [onClose]);
 
     return (
         <div
             className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
-            onClick={onClose}
-        >
+            onClick={onClose}>
+
             <div
-                className="bg-white rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6"
-                onClick={(e) => e.stopPropagation()}
-            >
+                className="bg-[var(--color-surface)] rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6"
+                onClick={(e) => e.stopPropagation()}>
+
                 <button
                     onClick={onClose}
-                    className="float-right text-xl font-bold"
-                >
-                    ✕
-                </button>
+                    className="float-right text-xl font-bold">✕</button>
 
                 <div className="flex flex-col md:flex-row gap-6 mt-6">
                     <div className="md:w-1/2">
@@ -80,7 +83,7 @@ export default function ProductModal({
                         />
                     </div>
 
-                    <div className="md:w-1/2 space-y-3">
+                    <div className="md:w-1/2 flex flex-col justify-center space-y-3">
                         <h2 className="text-2xl font-bold">
                             {product.name}
                         </h2>
@@ -89,26 +92,27 @@ export default function ProductModal({
                             ${product.price}
                         </p>
 
-                        <p className="text-gray-600">
+                        <p className="text-[var(--color-text)]/90">
                             Category: {product.category}
                         </p>
 
-                        <p className="text-gray-600">
+                        <p className="text-[var(--color-text)]/90">
                             Seller: {product.seller.name}
                         </p>
 
                         <div className="flex items-center gap-2">
-                            <span className="text-yellow-500">
-                                {"⭐".repeat(fullStars)}
-                                {"☆".repeat(5 - fullStars)}
-                            </span>
+                            {Array.from({ length: 5 }).map((_, i) => (
+                                <span key={i} className="text-[var(--color-text)/90]">
+                                    {i < fullStars ? "⭐" : "☆"}
+                                </span>
+                            ))}
 
-                            <span className="text-sm text-gray-500">
+                            <span className="text-sm text-[var(--color-text)]/90">
                                 ({product.reviews.length})
                             </span>
                         </div>
 
-                        <p className="text-gray-700">
+                        <p className="text-[var(--color-text)]/90">
                             {product.description}
                         </p>
                     </div>
@@ -148,8 +152,8 @@ export default function ProductModal({
                                 review: reviewText,
                             });
                         }}
-                        className="mt-3 bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800"
-                    >
+                        className="mt-3 bg-[var(--color-primary)] text-[var(--color-text)] 
+                        font-semibold transition px-4 py-2 rounded-md hover:bg-[var(--color-primary-hover)]">
                         Submit Review
                     </button>
                 </div>
