@@ -21,27 +21,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{children: React.ReactNode;}>) {
   return (
-    <html 
-    lang="en"
-    className={`${inter.variable} ${newsreader.variable}`}
-    >
+    <html
+      lang="en"
+      className={`${inter.variable} 
+      ${newsreader.variable}`}>
 
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      
-      <body className="bg-[#f4f7fb] text-black">
-       
-          <Navbar />
 
-          <main className="flex flex-col items-center p-6 pt-45 md:pt-6 md:ml-64">
-            {children}
-          </main>
-
+      <body className="bg-[var(--color-background)] text-[var(--color-text)]">
+        <Navbar />
+        <main className="flex flex-col items-center p-6 pt-45 md:pt-6 md:ml-64">
+          {children}
+        </main>
       </body>
     </html>
   );
