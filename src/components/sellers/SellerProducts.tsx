@@ -2,6 +2,7 @@
 import { getDb } from '@/lib/mongodb';
 import { Seller } from '@/types/seller';
 import ProductCard from '@/components/ProductCard';
+import SellerProductsClient from './sellerProductsClient';
 import Image from 'next/image';
 
 interface SellerProductsProps {
@@ -68,18 +69,15 @@ export default async function SellerProducts({ seller }: SellerProductsProps) {
           {sellerProducts.length} 
         </h2>
 
-        {sellerProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sellerProducts.map((product: any) => (
-              <ProductCard key={product.id} {...product} 
-              />
-            ))}
-          </div>
-        ) : (
-          <p className="text-gray-500 text-lg text-center py-12">
-            This seller hasn't added any products yet.
-          </p>
-        )}
+        {
+          sellerProducts.length > 0 ? (
+            <SellerProductsClient products={sellerProducts} />
+          ) : (
+            <p className="text-center py-20">
+              This seller has no products listed yet. Check back later!
+            </p>
+          )
+        }
       </div>
     </section>
   );
