@@ -11,11 +11,10 @@ type ProductCardProps = {
     price: number;
     image: string;
     reviews: { rating: number; }[];
-    onClick: () => void;
 };
 
 export default function ProductCard({
-    id, name, description, seller, price, image, reviews, onClick,
+    id, name, description, seller, price, image, reviews,
 }: ProductCardProps) {
     const safeReviews = Array.isArray(reviews) ? reviews : [];
 
@@ -28,7 +27,7 @@ export default function ProductCard({
 
 
     return (
-        <div onClick={onClick}
+        <div
             className="relative z-10 border border-[var(--color-text)]/10 rounded-lg p-4 flex flex-col gap-3 
             bg-[var(--color-surface)] cursor-pointer shadow-sm transition-all duration-200 
             hover:shadow-lg hover:-translate-y-1 h-full">
@@ -41,7 +40,6 @@ export default function ProductCard({
                 <p className="text-xs text-[var(--color-text)]">by {" "}
                     <Link
                         href="/sellers"
-                        onClick={(e) => e.stopPropagation()}
                         className="hover:underline">
                         {seller.name}
                     </Link>
@@ -62,7 +60,7 @@ export default function ProductCard({
             </div>
 
             <div className="flex items-center justify-between mt-3">
-                <button onClick={(e) => e.stopPropagation()}
+                <button
                     className="bg-[var(--color-primary)] text-[var(--color-text)] px-3 py-2 rounded-md text-sm
                         font-semibold transition hover:bg-[var(--color-primary-hover)] hover:shadow-md">
                     Add to cart
