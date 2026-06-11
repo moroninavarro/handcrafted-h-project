@@ -26,7 +26,7 @@ export default function ProductCard({
             : 0;
 
     const fullStars = Math.floor(rating);
-
+    const hasHalfStar = rating % 1 >= 0.5;
 
     return (
         <div
@@ -51,11 +51,15 @@ export default function ProductCard({
                 </p>
                 <div className="flex items-center gap-2">
                     <p className="text-[var(--color-text)]">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                            <span key={i}>
-                                {i < fullStars ? "⭐" : "☆"}
-                            </span>
-                        ))}
+                        {Array.from({ length: 5 }).map((_, i) => {
+                            if (i < fullStars) {
+                                return <span key={i}>★</span>;
+                            } else if (i === fullStars && hasHalfStar) {
+                                return <span key={i}>⯪</span>;
+                            } else {
+                                return <span key={i}>☆</span>;
+                            }
+                        })}
                     </p>
 
                     <span className="text-xs text-[var(--color-text)]">
