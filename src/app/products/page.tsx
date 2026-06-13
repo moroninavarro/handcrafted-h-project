@@ -3,6 +3,9 @@ import { getDb } from "@/lib/mongodb";
 import ProductGrid from "@/components/ProductGrid";
 import Link from "next/link";
 
+
+
+
 export default async function Page({ searchParams }: any) {
 
     const db = await getDb();
@@ -20,6 +23,8 @@ export default async function Page({ searchParams }: any) {
     const filteredProducts = selectedCategory
         ? products.filter((p: any) => p.category === selectedCategory)
         : products;
+
+
     const sellers = await db.collection("sellers").find().toArray();
 
     const productsWithReviews = filteredProducts.map((product: any) => {

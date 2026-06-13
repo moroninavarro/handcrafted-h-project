@@ -43,7 +43,7 @@ export default function ProductCard({
                 <p className="text-sm text-[var(--color-text)]">{description}</p>
                 <p className="text-xs text-[var(--color-text)]">by {" "}
                     <Link
-                        href="/sellers"
+                        href={`/sellers/${seller.id}`}
                         onClick={(e) => e.stopPropagation()}
                         className="hover:underline">
                         {seller.name}
@@ -72,8 +72,7 @@ export default function ProductCard({
                 <button
                     className="bg-[var(--color-primary)] text-[var(--color-text)] px-3 py-2 rounded-md text-sm
                         font-semibold transition hover:bg-[var(--color-primary-hover)] hover:shadow-md"
-                    onClick={(e) => e.stopPropagation()}
-                >
+                    onClick={(e) => e.stopPropagation()}>
                     Add to cart
                 </button>
 
