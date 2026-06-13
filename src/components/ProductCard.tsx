@@ -30,9 +30,7 @@ export default function ProductCard({
 
     return (
         <div
-            className="relative z-10 border border-[var(--color-text)]/10 rounded-lg p-4 flex flex-col gap-3 
-            bg-[var(--color-surface)] cursor-pointer shadow-sm transition-all duration-200 
-            hover:shadow-lg hover:-translate-y-1 h-full"
+            className="relative z-10 border rounded-lg p-4 flex flex-col gap-3 bg-[var(--color-surface)] cursor-pointer shadow-sm transition-all duration-200 hover:shadow-lg hover:-translate-y-1 h-full"
             onClick={onClick}
         >
 
