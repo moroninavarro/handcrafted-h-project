@@ -31,10 +31,6 @@ export default function SellerCard({ seller }: SellerCardProps) {
           {seller.location}
         </p>
 
-        <div className="flex justify-between mt-4 text-sm text-gray-600">
-          <span>{seller.products} Products</span>
-          <span>⭐ {seller.rating}</span>
-        </div>
 
         <Link
           href={`/sellers/${seller.id}/products`}

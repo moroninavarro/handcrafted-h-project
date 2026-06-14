@@ -56,7 +56,6 @@ export default async function SellerProducts({ seller }: SellerProductsProps) {
             <p className="text-sm mb-4">{seller.bio}</p>
             <div className="flex gap-6 text-sm">
               <span>📍 {seller.location}</span>
-              <span>⭐ {seller.rating}</span>
               <span>🛍️ {seller.products} Products</span>
             </div>
           </div>

@@ -45,7 +45,7 @@ export default async function SellerPage({ params }: SellerPageProps) {
             </div>
             <div className="rounded-3xl bg-gray-50 p-5">
               <span className="block text-xs uppercase tracking-[0.2em] text-gray-500 mb-2">Rating</span>
-              <strong>{seller.rating} ⭐</strong>
+              
             </div>
             <div className="rounded-3xl bg-gray-50 p-5">
               <span className="block text-xs uppercase tracking-[0.2em] text-gray-500 mb-2">Products</span>
