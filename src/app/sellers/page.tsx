@@ -7,7 +7,7 @@ export default async function SellerGrid() {
 
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold mb-10 text-center">Our Sellers</h1>
 
