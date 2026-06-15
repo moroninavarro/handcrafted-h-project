@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Newsreader } from "next/font/google";
+import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
 
 import Navbar from "../components/Navbar";
+
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,10 +35,12 @@ export default function RootLayout({
       </head>
 
       <body className="bg-[var(--color-background)] text-[var(--color-text)]">
-        <Navbar />
-        <main className="flex flex-col items-center p-6 pt-45 md:pt-6 md:ml-64">
-          {children}
+        <CartProvider>
+          <Navbar />
+          <main className="flex flex-col items-center p-6 pt-45 md:pt-6 md:ml-64">
+            {children}
         </main>
+      </CartProvider>
       </body>
     </html>
   );
