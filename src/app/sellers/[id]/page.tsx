@@ -23,7 +23,7 @@ export default async function SellerPage({ params }: SellerPageProps) {
   return (
     <section className="max-w-6xl mx-auto px-6 py-12">
       <div className="grid gap-10 lg:grid-cols-[320px_minmax(0,1fr)] items-center bg-white rounded-3xl shadow-xl overflow-hidden">
-        <div className="relative h-72 lg:h-[420px]">
+        <div className="relative h-72 lg:h-105">
           <Image
             src={seller.image}
             alt={seller.name}

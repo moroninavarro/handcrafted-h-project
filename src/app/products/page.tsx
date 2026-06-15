@@ -54,7 +54,7 @@ export default async function Page({ searchParams }: any) {
     });
 
     return (
-        <main className="min-h-screen bg-[var(--color-background)]">
+        <main className="min-h-screen bg-(--color-background)">
 
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -65,7 +65,7 @@ export default async function Page({ searchParams }: any) {
                         className={`px-4 py-2 rounded-xl font-semibold transition shadow-sm
                                 ${!selectedCategory
                                 ? "bg-white text-black"
-                                : "bg-[var(--color-primary)] text-[var(--color-text)] hover:bg-[var(--color-primary-hover)]"
+                                : "bg-(--color-primary) text-(--color-text) hover:bg-(--color-primary-hover)"
                             }`}>
                         All</Link>
 
@@ -78,7 +78,7 @@ export default async function Page({ searchParams }: any) {
                                 className={`px-4 py-2 rounded-xl font-semibold transition shadow-sm
                                         ${isActive
                                         ? "bg-white text-black"
-                                        : "bg-[var(--color-primary)] text-[var(--color-text)] hover:bg-[var(--color-primary-hover)]"
+                                        : "bg-(--color-primary) text-(--color-text) hover:bg-(--color-primary-hover)"
                                     }`}>
                                 {category.name}
                             </Link>

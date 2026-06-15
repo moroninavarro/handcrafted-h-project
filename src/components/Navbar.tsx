@@ -61,22 +61,40 @@ const authLinks = [
 
 export default function Navbar() {
     const [authenticated, setAuthenticated] = useState(false);
+    const [role, setRole] = useState("");
 
     useEffect(() => {
     async function checkAuth() {
         try{
             const response = await fetch("/api/auth/me");
 
-            setAuthenticated(response.ok);
+            if (response.ok) {
+                const data = await response.json();
+
+                setAuthenticated(true);
+                setRole(data.role);
+            } else {
+                setAuthenticated(false);
+                setRole("");
+            }
         } catch {
             setAuthenticated(false);
+            setRole("");
         }
     }
 
     checkAuth();
 }, []);
 
-    const links = authenticated ? authLinks : guestLinks;
+    let links = authenticated ? [...authLinks] : guestLinks;
+
+    if (authenticated && role === "seller") {
+        links.splice(3, 0, {
+            name: "Seller Dashboard",
+            href: "/seller-dashboard",
+            icon: UserIcon,
+        })
+    }
 
     return (
         <aside className="fixed top-0 left-0 z-50 w-full h-36 bg-(--color-background) border-b shadow-lg md:h-screen md:w-64 md:border-r md:border-b-0">
