@@ -11,7 +11,7 @@ export default function Home() {
           width={1600}
           height={600}
           priority
-          className="h-[500px] w-full object-cover object-center"
+          className="h-125 w-full object-cover object-center"
         />
 
         <div className="absolute inset-0 bg-black/35" />
@@ -26,15 +26,15 @@ export default function Home() {
           <div className="flex gap-4">
             <Link
               href="/products"
-              className="rounded-xl bg-[var(--color-primary)] px-6 py-3 font-semibold 
-              text-[var(--color-text)] shadow-md transition hover:bg-[var(--color-primary-hover)]">
+              className="rounded-xl bg-(--color-primary) px-6 py-3 font-semibold 
+              text-(--color-text) shadow-md transition hover:bg-(--color-primary-hover)">
               Shop Now
             </Link>
 
             <Link
               href="/sellers"
-              className="rounded-xl border border-[var(--color-primary)] px-6 py-3 font-semibold 
-              text-white transition hover:bg-[var(--color-primary)] hover:text-[var(--color-text)]">
+              className="rounded-xl border border-(--color-primary) px-6 py-3 font-semibold 
+              text-white transition hover:bg-(--color-primary) hover:text-(--color-text)">
               Explore Sellers
             </Link>
           </div>
