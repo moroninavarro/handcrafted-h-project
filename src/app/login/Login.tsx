@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,7 +16,7 @@ export default function LoginForm() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: email,
+        identifier: identifier,
         password,
       }),
     });
@@ -38,20 +38,20 @@ export default function LoginForm() {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
-        <h1 className="text-3xl font-bold text-center mb-6">Login Page</h1>
+    <div className="flex items-start justify-center min-h-screen pt-24">
+      <div className="w-full max-w-lg bg-white shadow-lg rounded-xl p-10">
+        <h1 className="text-4xl font-bold text-center mb-15">Login Page</h1>
 
         
         <form onSubmit={handleLogin}>
           <input
             
-            type="email"
-            placeholder="Email"
+            type="text"
+            placeholder="Username or Email"
             className="w-full mb-4 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
           />
 
           <div className="relative mb-4">

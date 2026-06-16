@@ -7,11 +7,11 @@ import { getDb } from "@/lib/mongodb";
 
 export async function POST(request: Request){
     try{
-        const { email, password } = await request.json();
+        const { identifier, password } = await request.json();
 
-           if (!email || !password){
+           if (!identifier || !password){
             return NextResponse.json(
-                { error:"Email and password are required"},
+                { error:"Username/Email and password are required"},
                 { status: 400 }
             );
         }
@@ -19,7 +19,9 @@ export async function POST(request: Request){
         const db = await getDb();
 
 
-        const user = await db.collection("users").findOne({ email });
+        const user = await db.collection("users").findOne({ 
+            $or: [{ email: identifier }, { username: identifier }],
+         });
 
         if (!user) {
             return NextResponse.json(
@@ -36,7 +38,7 @@ export async function POST(request: Request){
 
           if(!isValidPassword){
             return NextResponse.json(
-                { error: "Invalid email or password"},
+                { error: "Invalid username/email or password"},
                 { status: 401 }
             );
         }
