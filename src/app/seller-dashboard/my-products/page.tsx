@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-
+import Link from "next/link";
 
 interface Product {
     _id: string;
@@ -43,7 +43,7 @@ export default function MyProductsPage() {
     }
 
     return (
-        <div className="p-10">
+        <div className="p-10 w-full">
             <h1 className="text-3xl font-bold mb-6">
                 My Products
             </h1>
@@ -51,11 +51,11 @@ export default function MyProductsPage() {
             {products.length === 0 ? (
                 <p>You haven't created any products yet.</p>
             ) : (
-                <div className="space-y-4">
+                <div className="space-y-4 w-full">
                     {products.map((product) =>(
                         <div
                         key={product._id}
-                        className="border rounded-xl p-6 flex justify-between items-center shadow-md min-h-35"
+                        className="border rounded-xl p-6 shadow-md flex flex-col gap-4 md:flex-row md:justify-between md:items-center w-full max-w-5xl"
                         >
                 <div className="flex items-center gap-6">
                     <img
@@ -78,16 +78,41 @@ export default function MyProductsPage() {
 
 
                 <div className="flex gap-2">
-                    <button
+                    <Link
+                    href={`/seller-dashboard/edit-product/${product._id}`}
                     className="bg-yellow-500 text-white px-4 py-2 rounded"
                     >
                         Edit
-                    </button>
+                    </Link>
 
-                    <button className="bg-yellow-500 text-white px-4 py-2 rounded"
+
+                    <button
+                    onClick={async () => {
+                        const confirmed = confirm(
+                            "Are you sure you want to delete this product?"
+                        );
+
+                        if (!confirmed) return;
+
+                        const response = await fetch(
+                            `/api/auth/products/${product._id}`,
+                            {
+                                method: "Delete",
+                            }
+                        );
+
+                        if (response.ok) {
+                            setProducts((prev) =>
+                            prev.filter((p) => p._id !== product._id)
+                        );
+                        } else {
+                            alert("Failed to delete product.");
+                        }
+                    }}
+                    className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
                     >
                         Delete
-                        </button>
+                    </button>
                     </div>  
                 </div>
                  ))}

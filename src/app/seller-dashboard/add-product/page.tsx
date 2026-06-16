@@ -136,7 +136,7 @@ return (
 
             <button
             type="submit"
-            className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600"
+            className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 cursor-pointer"
             >
                 Create Product
             </button>
