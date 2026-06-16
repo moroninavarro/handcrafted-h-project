@@ -173,22 +173,24 @@ export default function ProductModal({
                             try {
                                 const response = await createReview({
                                     productId: product.id,
-                                    user: "Anonymous User",
                                     rating: userRating,
                                     comment: reviewText,
                                 });
 
-                                if (response.success) {
+                                if (response.success && response.username) {
                                     const newReview = {
                                         rating: userRating,
                                         comment: reviewText,
-                                        user: "Anonymous User"
+                                        user: response.username
                                     };
 
                                     setLocalReviews([...localReviews, newReview]);
 
+                                    setReviewText("");
+                                    setUserRating(0);
+
                                 } else {
-                                    alert("Could not save to database.");
+                                    alert(response.error || "Could not save to database.");
                                 }
                             } catch (error) {
                                 console.error("Error submitting review:", error);
