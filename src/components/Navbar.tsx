@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useCart } from "@/context/CartContext";
 
 
 import {
@@ -62,29 +63,35 @@ const authLinks = [
 export default function Navbar() {
     const [authenticated, setAuthenticated] = useState(false);
     const [role, setRole] = useState("");
+    const { cart } = useCart();
+
+    const totalItems = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
 
     useEffect(() => {
-    async function checkAuth() {
-        try{
-            const response = await fetch("/api/auth/me");
+        async function checkAuth() {
+            try {
+                const response = await fetch("/api/auth/me");
 
-            if (response.ok) {
-                const data = await response.json();
+                if (response.ok) {
+                    const data = await response.json();
 
-                setAuthenticated(true);
-                setRole(data.role);
-            } else {
+                    setAuthenticated(true);
+                    setRole(data.role);
+                } else {
+                    setAuthenticated(false);
+                    setRole("");
+                }
+            } catch {
                 setAuthenticated(false);
                 setRole("");
             }
-        } catch {
-            setAuthenticated(false);
-            setRole("");
         }
-    }
 
-    checkAuth();
-}, []);
+        checkAuth();
+    }, []);
 
     let links = authenticated ? [...authLinks] : guestLinks;
 
@@ -110,23 +117,23 @@ export default function Navbar() {
                 {links.map((link) => {
                     const Icon = link.icon;
 
-                    if (link.name === "Logout"){
-                        return(
+                    if (link.name === "Logout") {
+                        return (
                             <button
-                            key={link.name}
-                            onClick={async() => {
-                                const response = await fetch("/api/auth/logout", {
-                                    method:"POST",
-                                });
+                                key={link.name}
+                                onClick={async () => {
+                                    const response = await fetch("/api/auth/logout", {
+                                        method: "POST",
+                                    });
 
-                                if (response.ok) {
-                                    setAuthenticated(false);
-                                    window.location.href = "/";
-                                }
-                            }}
-                            className="flex items-center justify-center gap-3 rounded-xl p-3 text-(--color-text) transition hover:bg-(--color-primary)/60 md:justify-start cursor-pointer"
+                                    if (response.ok) {
+                                        setAuthenticated(false);
+                                        window.location.href = "/";
+                                    }
+                                }}
+                                className="flex items-center justify-center gap-3 rounded-xl p-3 text-(--color-text) transition hover:bg-(--color-primary)/60 md:justify-start cursor-pointer"
                             >
-                                <Icon className="w-6 h-6"/>
+                                <Icon className="w-6 h-6" />
                                 <span className="hidden md:block">
                                     {link.name}
 
@@ -134,26 +141,36 @@ export default function Navbar() {
 
                             </button>
                         );
-                        
+
                     }
                     return (
-                        <Link 
-                        key={link.name}
-                        href={link.href}
-                        className="flex items-center justify-center gap-3 rounded-xl p-3 text-(--color-text) transition hover:bg-(--color-primary)/60 md:justify-start"
-                        >
+                        <Link
+                            key={link.name}
+                            href={link.href}
+                            className="flex items-center justify-center gap-3 rounded-xl p-3 text-(--color-text) 
+                            transition hover:bg-(--color-primary)/60 md:justify-start">
                             <Icon className="w-6 h-6" />
                             <span className="hidden md:block">
                                 {link.name}
                             </span>
                         </Link>
-                   );
-                 })}
+                    );
+                })}
 
-                <Link href="/basket" className="flex items-center gap-3 rounded-xl border border-(--color-text)/15 px-4 py-2 transition hover:bg-(--color-primary)/60 text-bold text-(--color-text) justify-center">
+                <Link
+                    href="/basket"
+                    className="flex items-center gap-3 rounded-xl border border-(--color-text)/15 px-4 py-2 
+                    transition hover:bg-(--color-primary)/60 text-bold text-(--color-text) justify-center">
                     Basket
+                    {totalItems > 0 && (
+                        <span
+                            className="flex items-center justify-center min-w-5 h-5 px-1 
+                            text-xs rounded-full bg-[var(--color-text)] text-white">
+                            {totalItems}
+                        </span>
+                    )}
                 </Link>
-  
+
             </nav>
         </aside>
     );

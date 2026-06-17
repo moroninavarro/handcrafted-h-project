@@ -54,7 +54,7 @@ export default async function SellerPage({ params }: SellerPageProps) {
           </div>
 
           <Link
-            href={`/sellers/${seller.id}/products`}
+            href={`/sellers/${seller._id}/products`}
             className="inline-flex items-center justify-center rounded-full bg-amber-800 px-8 py-3 text-white font-semibold hover:bg-amber-900 transition"
           >
             View Products

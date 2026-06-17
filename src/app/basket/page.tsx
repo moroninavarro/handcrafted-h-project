@@ -13,7 +13,7 @@ export default function BasketPage() {
 
   return (
     <main className="p-6">
-      <h1 className="text-3xl font-bold mb-6">Basket Page</h1>
+      <h1 className="text-3xl font-bold mb-6">Your Basket</h1>
 
       {cart.length === 0 && <p>Your basket is empty</p>}
 

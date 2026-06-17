@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createReview } from "../lib/actions";
+import { useCart } from "@/context/CartContext";
 
 type ProductModalProps = {
     product: {
@@ -24,6 +25,9 @@ export default function ProductModal({
     product,
     onClose,
 }: ProductModalProps) {
+    const { addToCart } = useCart();
+    const [added, setAdded] = useState(false);
+
     const [userRating, setUserRating] = useState(0);
     const [reviewText, setReviewText] = useState("");
     const [localReviews, setLocalReviews] = useState(product.reviews);
@@ -134,6 +138,29 @@ export default function ProductModal({
                         <p className="text-[var(--color-text)]/90">
                             {product.description}
                         </p>
+
+                        <button
+                            onClick={() => {
+                                addToCart({
+                                    id: product.id,
+                                    name: product.name,
+                                    price: product.price,
+                                    image: product.image,
+                                });
+
+                                setAdded(true);
+
+                                setTimeout(() => {
+                                    setAdded(false);
+                                }, 1500);
+                            }}
+                            className={`px-4 py-2 rounded-md font-semibold transition cursor-pointer ${added
+                                    ? "bg-green-600 text-white"
+                                    : "bg-[var(--color-primary)] text-[var(--color-text)] hover:bg-[var(--color-primary-hover)]"
+                                }`}
+                        >
+                            {added ? "Added ✓" : "Add to cart"}
+                        </button>
                     </div>
                 </div>
 

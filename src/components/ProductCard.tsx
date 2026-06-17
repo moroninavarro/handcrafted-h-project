@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import { useCart } from "@/context/CartContext";
+import { useState } from "react";
 
 type ProductCardProps = {
     id: string;
@@ -18,6 +20,9 @@ type ProductCardProps = {
 export default function ProductCard({
     id, name, description, seller, price, image, reviews, onClick
 }: ProductCardProps) {
+
+    const { addToCart } = useCart();
+    const [added, setAdded] = useState(false);
     const safeReviews = Array.isArray(reviews) ? reviews : [];
 
     const rating =
@@ -68,10 +73,28 @@ export default function ProductCard({
 
             <div className="flex items-center justify-between mt-3">
                 <button
-                    className="bg-[var(--color-primary)] text-[var(--color-text)] px-3 py-2 rounded-md text-sm
-                        font-semibold transition hover:bg-[var(--color-primary-hover)] hover:shadow-md"
-                    onClick={(e) => e.stopPropagation()}>
-                    Add to cart
+                    className={`px-3 py-2 rounded-md text-sm font-semibold transition hover:shadow-md ${added
+                            ? "bg-green-600 text-white"
+                            : "bg-[var(--color-primary)] text-[var(--color-text)] hover:bg-[var(--color-primary-hover)]"
+                        }`}
+                    onClick={(e) => {
+                        e.stopPropagation();
+
+                        addToCart({
+                            id,
+                            name,
+                            price,
+                            image,
+                        });
+
+                        setAdded(true);
+
+                        setTimeout(() => {
+                            setAdded(false);
+                        }, 1500);
+                    }}
+                >
+                    {added ? "Added ✓" : "Add to cart"}
                 </button>
 
                 <p className="font-bold text-lg">${price}</p>
